@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        #taskList{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <input id="taskInput" type="text" placeholder="Enter a task">
+    <button id="addTask">Add Task</button>
+    <ul id="taskList"></ul>
+
+    <script>
+        let button = document.getElementById("addTask");
+        let input = document.getElementById("taskInput");
+        let taskList = document.getElementById("taskList");
+
+        button.addEventListener("keydown", function (event) {
+            let taskText = input.value.trim();
+
+            if (taskText !== "") {
+                let li = document.createElement("li");
+                li.textContent = taskText;
+
+                // Remove task when clicked
+                li.addEventListener("click", function () {
+                    taskList.removeChild(li);
+                });
+
+                taskList.appendChild(li);
+                input.value = ""; // Clear input after adding
+            }
+        });
+    </script>
+</body>
+</html>
+
+
